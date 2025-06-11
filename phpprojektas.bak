@@ -1,0 +1,174 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.4
+-- Dumped by pg_dump version 17.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: userpasswords; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.userpasswords (
+    id integer NOT NULL,
+    url text,
+    createdon timestamp without time zone,
+    password text,
+    createdbyuser integer
+);
+
+
+ALTER TABLE public.userpasswords OWNER TO postgres;
+
+--
+-- Name: userpasswords_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.userpasswords_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.userpasswords_id_seq OWNER TO postgres;
+
+--
+-- Name: userpasswords_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.userpasswords_id_seq OWNED BY public.userpasswords.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    name text,
+    password text,
+    key text
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: userpasswords id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.userpasswords ALTER COLUMN id SET DEFAULT nextval('public.userpasswords_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: userpasswords; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.userpasswords (id, url, createdon, password, createdbyuser) FROM stdin;
+6	test	2025-06-11 21:42:41	fkmZO1FOPT6c/YSZq+JCHcvGRnFEIiLtZ/YQkwQL8nBD2+Kawr2kz9IhJNBAYbCX	1
+7	fghfghf	2025-06-11 21:46:13	97uSq9h8tq9USiikcekvi7MMBTugG5UQe03YhDyyehOsZYkZN6RIx0A5BFVbJpCR	1
+8	hjghjghj	2025-06-11 21:48:01	rlHtPd52J02lAgi1ERQPZ7de6FJjcN7bGIz3cSM2RixST4CzT5CXR2HvuRvsb0Dc	3
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, name, password, key) FROM stdin;
+2	ponaitis	$2y$10$d4zlrWlo3TngebPHhnkVPes.AVPduSbcGKIUml.WND6CldcZ27Vb6	E47ktdja7ezmllHiGLHj19tKniYt2+BTU2njitiDJRvCRPwVE8BHugRn6B/hSW3DWQlCTK4tfhbFkVZMp+n4Lz1kboIqSqMBVJE95UeOeSh7l1J9XEJnmjZmZoYUGlthhiRsI0YoE6DmJStDnn5AlA==
+3	ponaitis@gmail.com	$2y$10$6Vm3JTHiJDLnkFEdu/5o4.29R.E.0N8NAgQEtiif2OXD1E7ulkiN.	piHNQR35wvKwVmxHC2/V+klH/wOD5kdmSVnaK9soODe4nQ88vHSO89FLlGLFRUyqe5w3NuiDbLxaIwk+OlGOjIPunxlrbOJ4hKhxgicTrDqQstREK/0rbqz9qcJ31DfwL7ldjLb3SF74R2bIi2dxQg==
+1	vpekarskaite@gmail.com	$2y$10$.yUm5Ux.Ap3x4kw6htac9OvKmaoRDdnp4s2OxtqJyaF0OISPC1DNO	Î­7EÇ_ÿ­T\t*Á}Z6ð³¯K Îj-Xhïë×KÆ|èöÖíú\t¨Ë\vý@ÿâÓHfÇ¯^ GEîµuÓö±¼áÁÉÒp½ýaô÷\f?´\vÊD¹4Y;ÄhJ-[<¯Bq¦rÞ¨(6æ¬lHEÆJ
+\.
+
+
+--
+-- Name: userpasswords_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.userpasswords_id_seq', 8, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+
+
+--
+-- Name: userpasswords userpasswords_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.userpasswords
+    ADD CONSTRAINT userpasswords_pk PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pk PRIMARY KEY (id);
+
+
+--
+-- Name: userpasswords userpasswords_users_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.userpasswords
+    ADD CONSTRAINT userpasswords_users_id_fk FOREIGN KEY (createdbyuser) REFERENCES public.users(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
