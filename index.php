@@ -7,7 +7,6 @@ use App\Services\AuthService;
 $dbService = new \App\Services\DatabaseService();
 
 $dbService->Connect();
-$dbService->ExecuteDebugQuery("SELECT version()");
 
 //// Create an Admin user
 //$admin = new Admin("Alice", "alice@example.com", "admin123");

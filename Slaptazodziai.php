@@ -197,7 +197,7 @@ $userPasswords = $databaseService->GetUserPasswords($_GET['user']);
         <h3 class="text-xl font-semibold text-gray-800 mb-4">Navigation</h3>
         <ul class="space-y-3">
             <!-- Navigation links with hover effects -->
-            <li><a href="/Slaptazodziai.php" class="block text-blue-600 hover:text-blue-800 font-medium py-2 px-3 rounded-md transition duration-150 ease-in-out hover:bg-blue-50">Slaptažodžiai</a></li>
+            <li><a href="<?php echo "/Slaptazodziai.php?user=". urlencode($_GET['user']) ?>" class="block text-blue-600 hover:text-blue-800 font-medium py-2 px-3 rounded-md transition duration-150 ease-in-out hover:bg-blue-50">Slaptažodžiai</a></li>
             <li><a href="/login.php" class="block text-blue-600 hover:text-blue-800 font-medium py-2 px-3 rounded-md transition duration-150 ease-in-out hover:bg-blue-50">Atsijungti</a></li>
         </ul>
     </nav>
